@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     console.log("Received email from", postBody.from);
 
     const { data, error } = await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "dawbell@tomasmaillo.com",
       to: postBody.from,
       subject: "We're working on it",
       react: <Confirmation />,
