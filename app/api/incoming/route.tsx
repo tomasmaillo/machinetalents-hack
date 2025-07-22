@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import { EmailTemplate } from "../../../emails/EmailTemplate";
 import * as React from "react";
 import { Confirmation } from "@/emails/Confirmation";
+import { research } from "./research";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -22,6 +23,9 @@ export async function POST(request: Request) {
 
     console.log({ data, error });
     console.log("Email sent to", postBody.from);
+
+    const researchResponse = await research(emailText, postBody.from);
+    console.log({ researchResponse });
 
     return NextResponse.json({ success: true });
   } catch (error) {
